@@ -83,9 +83,11 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--txt);min-he
 .epk{width:42px;height:42px;border:1.5px solid var(--brd);border-radius:var(--rs);background:var(--bg);font-size:1.35rem;cursor:pointer;display:-webkit-box;display:flex;-webkit-box-align:center;align-items:center;-webkit-box-pack:center;justify-content:center;-webkit-box-flex:0;flex-shrink:0;}
 .epkr{position:absolute;top:48px;right:0;background:#fff;border-radius:var(--r);box-shadow:0 8px 32px rgba(0,0,0,0.15);padding:10px;z-index:500;display:none;width:260px;}
 .epkr.on{display:block;}
-.egrd{display:-webkit-box;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;gap:4px;}
-.eopt{border:none;background:none;font-size:1.6rem;cursor:pointer;padding:5px;border-radius:8px;line-height:1.2;}
+.egrd{display:-webkit-box;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;gap:6px;max-height:260px;overflow-y:auto;}
+.eopt{border:none;background:none;cursor:pointer;padding:5px 3px;border-radius:8px;display:-webkit-box;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column;-webkit-box-align:center;align-items:center;gap:2px;width:56px;}
 .eopt:active,.eopt:hover{background:var(--pril);}
+.eico{font-size:1.5rem;line-height:1.2;}
+.elbl{font-size:0.55rem;color:var(--muted);text-align:center;line-height:1.2;max-width:54px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
 .empty{text-align:center;padding:40px 18px;color:var(--muted);}
 .empty .ei{font-size:3rem;margin-bottom:10px;}
 .bbar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--brd);padding:10px 14px calc(10px + env(safe-area-inset-bottom));display:-webkit-box;display:flex;-webkit-box-align:center;align-items:center;-webkit-box-pack:justify;justify-content:space-between;box-shadow:0 -4px 20px rgba(0,0,0,0.07);z-index:99;}
@@ -568,7 +570,7 @@ function initEP(){
   var h='';
   for(var i=0;i<EMOJIS.length;i++){
     var em=EMOJIS[i];
-    h+='<button class="eopt" onclick="selE(\''+em.e+'\')" title="'+em.t+'">'+em.e+'</button>';
+    h+='<button class="eopt" onclick="selE(\''+em.e+'\')"><span class="eico">'+em.e+'</span><span class="elbl">'+em.t+'</span></button>';
   }
   g.innerHTML=h;
 }
