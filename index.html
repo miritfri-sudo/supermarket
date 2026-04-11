@@ -80,7 +80,7 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--txt);min-he
 .epkr{position:absolute;top:48px;right:0;background:#fff;border-radius:var(--r);box-shadow:0 8px 32px rgba(0,0,0,0.15);padding:10px;z-index:500;display:none;width:260px;}
 .epkr.on{display:block;}
 .egrd{display:-webkit-box;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;gap:4px;}
-.eopt{border:none;background:none;font-size:1.3rem;cursor:pointer;padding:4px;border-radius:8px;}
+.eopt{border:none;background:none;font-size:1.6rem;cursor:pointer;padding:5px;border-radius:8px;line-height:1.2;}
 .eopt:active,.eopt:hover{background:var(--pril);}
 .empty{text-align:center;padding:40px 18px;color:var(--muted);}
 .empty .ei{font-size:3rem;margin-bottom:10px;}
@@ -209,7 +209,18 @@ var DD=[
   {id:'baby',name:'תינוקות',icon:'🍼'},
   {id:'other',name:'שונות',icon:'🛒'}
 ];
-var EMOJIS='🥦🥕🍅🍎🍋🥑🌽🧄🧀🥛🍳🥚🧈🥩🍗🌭🥓🍖🍞🥐🥖🧁🍰🧊🫙🥫🍝🍜🫘🌾🧂🧃🥤🍵☕🧋🍫🍬🍭🍿🍪🧹🧺🧻🪣🧴🪥🧼💊🩺🍼🧸🛒📦🏠🐾📱💻🎵⭐'.split('');
+var EMOJIS=[
+'🥦','🥕','🍅','🍎','🍋','🥑','🌽','🧄',
+'🧀','🥛','🍳','🥚','🧈',
+'🥩','🍗','🌭','🥓','🍖',
+'🍞','🥐','🥖','🧁','🍰',
+'🧊','🥫','🍝','🍜','🫘','🌾','🧂',
+'🧃','🥤','🍵','☕','🍷',
+'🍫','🍬','🍭','🍿','🍪',
+'🧹','🧺','🧻','🪣','🧴','🪥','🧼',
+'💊','🩺','🍼','🧸',
+'🛒','📦','🏠','🐾','⭐'
+];
 
 var depts=JSON.parse(localStorage.getItem('sm_d')||'null')||DD;
 var items=JSON.parse(localStorage.getItem('sm_i')||'[]');
