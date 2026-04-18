@@ -257,7 +257,7 @@ var EMOJIS=[
   {e:'🛒',t:'כללי'},{e:'📦',t:'קופסה'},{e:'🏠',t:'בית'},{e:'⭐',t:'מועדף'},{e:'🎁',t:'מתנה'},{e:'🔋',t:'סוללה'}
 ];
 
-var depts=JSON.parse(localStorage.getItem('sm_d')||'null')||DD;
+var lastDept=localStorage.getItem('sm_ld')||'';
 var items=JSON.parse(localStorage.getItem('sm_i')||'[]');
 var coll=JSON.parse(localStorage.getItem('sm_c')||'{}');
 var flt='all';
@@ -377,7 +377,9 @@ function delI(id){var ni=[];for(var i=0;i<items.length;i++) if(items[i].id!==id)
 function addItem(){
   var nm=document.getElementById('niName').value.trim();
   if(!nm){toast('⚠️ הכניסי שם מוצר');return;}
-  items.push({id:Date.now()+'',name:nm,dept:document.getElementById('niDept').value,note:document.getElementById('niNote').value.trim(),qty:parseInt(document.getElementById('niQty').value),chk:false});
+  var dept=document.getElementById('niDept').value;
+  localStorage.setItem('sm_lastd', dept);
+  items.push({id:Date.now()+'',name:nm,dept:dept,note:document.getElementById('niNote').value.trim(),qty:parseInt(document.getElementById('niQty').value),chk:false});
   sv();render();
   document.getElementById('niName').value='';
   document.getElementById('niNote').value='';
@@ -433,7 +435,12 @@ function togDM(){
   if(!isOn) rDM();
 }
 function fillDS(){
-  var s='';for(var i=0;i<depts.length;i++) s+='<option value="'+depts[i].id+'">'+depts[i].icon+' '+depts[i].name+'</option>';
+  var last=localStorage.getItem('sm_lastd')||depts[0].id;
+  var s='';
+  for(var i=0;i<depts.length;i++){
+    var sel=depts[i].id===last?' selected':'';
+    s+='<option value="'+depts[i].id+'"'+sel+'>'+depts[i].icon+' '+depts[i].name+'</option>';
+  }
   document.getElementById('niDept').innerHTML=s;
 }
 
