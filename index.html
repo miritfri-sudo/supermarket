@@ -556,12 +556,13 @@ function reord(fid,tid){
 }
 
 function addDept(){
-  var em=document.getElementById('epkBtn').innerHTML.trim()||'🛒';
+  var em=document.getElementById('epkBtn').dataset.emoji||'🛒';
   var nm=document.getElementById('ndName').value.trim();
   if(!nm){toast('⚠️ הכניסי שם');return;}
   depts.push({id:'d'+Date.now(),name:nm,icon:em});
   sv();rDM();
   document.getElementById('epkBtn').innerHTML='🛒';
+  document.getElementById('epkBtn').dataset.emoji='🛒';
   document.getElementById('ndName').value='';
   toast('✅ מחלקה נוספה');
 }
@@ -582,7 +583,12 @@ function initEP(){
   g.innerHTML=h;
 }
 function togEP(e){e.stopPropagation();var p=document.getElementById('epkr');p.className='epkr'+(p.className.indexOf('on')>-1?'':' on');}
-function selE(em){document.getElementById('epkBtn').innerHTML=em;document.getElementById('epkr').className='epkr';}
+function selE(em){
+  var btn=document.getElementById('epkBtn');
+  btn.innerHTML=em;
+  btn.dataset.emoji=em;
+  document.getElementById('epkr').className='epkr';
+}
 document.addEventListener('click',function(){document.getElementById('epkr').className='epkr';});
 
 function toast(msg){
